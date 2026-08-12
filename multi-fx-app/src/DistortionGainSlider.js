@@ -4,23 +4,25 @@ import { useState } from "react"
 export function DistortionGainSlider({
     setDistortionGain
 }) {
-  const [data, setData]=useState(0)
+  const [data, setData]=useState(5)
 
     function handleSlider(e){
         setData(e.target.value)
         setDistortionGain(e.target.value)
     }    
     return(
-        <>
-          <div>Gain for Distortion</div>
-          <div>
-                <input 
-                    type='range' min='0' max='10' 
-                    step='1' value={data} 
-                    onChange={handleSlider}
-                />
-                <h2>{data}</h2>
-            </div>   
-        </>
+        <div className="slider-row">
+            <div className="slider-row-top">
+                <span className="slider-label">Gain</span>
+                <span className="slider-value">{data}</span>
+            </div>
+            <input
+                className="styled-range"
+                type='range' min='0' max='10'
+                step='1' value={data}
+                onChange={handleSlider}
+                style={{ "--fill": `${data * 10}%` }}
+            />
+        </div>
     )
 }

@@ -4,13 +4,13 @@ import { DelayBox } from "./DelayBox";
 import { ChorusBox } from "./ChorusBox";
 import { DistortionBox } from "./DistortionBox";
 
-export function EffectBoxes() {
+export function EffectBoxes({ distortion, chorus, delay }) {
     return (
         <>  
             <div className="effect-boxes">
-                <DelayBox />
-                <ChorusBox />
-                <DistortionBox />
+                <DelayBox {...delay} />
+                <ChorusBox {...chorus} />
+                <DistortionBox {...distortion} />
             </div>
         </>
     )

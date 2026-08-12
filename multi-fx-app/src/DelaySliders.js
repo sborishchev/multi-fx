@@ -10,18 +10,16 @@ export function DelaySliders({
     setDelayDelay
 }) {
     return(
-        <>
-            <div>
-                <DelayLevelSlider 
-                    setDelayLevel={setDelayLevel}
-                />
-                <DelayFeedbackSlider 
-                    setDelayFeedback={setDelayFeedback}
-                />
-                <DelayDelaySlider
-                    setDelayDelay={setDelayDelay}
-                />
-            </div>
-        </>
+        <div className="slider-group">
+            <DelayLevelSlider 
+                setDelayLevel={setDelayLevel}
+            />
+            <DelayFeedbackSlider 
+                setDelayFeedback={setDelayFeedback}
+            />
+            <DelayDelaySlider
+                setDelayDelay={setDelayDelay}
+            />
+        </div>
     )
 }

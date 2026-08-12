@@ -10,18 +10,16 @@ export function ChorusSliders({
     setChorusDepth
 }) {
     return(
-        <>
-            <div>
-                <ChorusLevelSlider 
-                    setChorusLevel={setChorusLevel}
-                />
-                <ChorusRateSlider 
-                    setChorusRate={setChorusRate}
-                />
-                <ChorusDepthSlider
-                    setChorusDepth={setChorusDepth}
-                />
-            </div>
-        </>
+        <div className="slider-group">
+            <ChorusLevelSlider 
+                setChorusLevel={setChorusLevel}
+            />
+            <ChorusRateSlider 
+                setChorusRate={setChorusRate}
+            />
+            <ChorusDepthSlider
+                setChorusDepth={setChorusDepth}
+            />
+        </div>
     )
 }

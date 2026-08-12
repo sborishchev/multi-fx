@@ -3,22 +3,21 @@ import { useState } from 'react'
 
 import { ChorusSliders } from './ChorusSliders'
 
-export function ChorusBox() {
-    // chorus slider state
-    const [chorusLevel, setChorusLevel] = useState(0);
-    const [chorusRate, setChorusRate] = useState(0);
-    const [chorusDepth, setChorusDepth] = useState(0);
-
-    // chorus button state
+export function ChorusBox({
+    level, setLevel,
+    rate, setRate,
+    depth, setDepth,
+    chosen, setChosen,
+}) {
+    // chorus button state (live monitoring only)
     const [chorusButtonState, setChorusButtonState] = useState(false);
 
     const startChorus = async () => {
         setChorusButtonState(!chorusButtonState)
-        console.log(chorusLevel, chorusRate, chorusDepth)
         const query = new URLSearchParams({
-            chorusLevel,
-            chorusRate,
-            chorusDepth,
+            chorusLevel: level,
+            chorusRate: rate,
+            chorusDepth: depth,
             enableChorus: true,
         }).toString();
       
@@ -43,16 +42,32 @@ export function ChorusBox() {
     };
 
     return(
-        <>
-            <div>Chorus</div>
-            <button onClick={chorusButtonState ? stopChorus : startChorus}>
-                {chorusButtonState ? "Stop" : "Start"} Chorus
-            </button>
+        <div className={`effect-card${chorusButtonState ? " effect-card--active" : ""}`}>
+            <div className="effect-card-header">
+                <div className="effect-card-title">
+                    <span className={`status-dot${chorusButtonState ? " status-dot--on" : ""}`} />
+                    Chorus
+                </div>
+                <button
+                    className={`toggle-btn${chorusButtonState ? " toggle-btn--active" : ""}`}
+                    onClick={chorusButtonState ? stopChorus : startChorus}
+                >
+                    {chorusButtonState ? "Stop" : "Start"}
+                </button>
+            </div>
+            <label className="chosen-toggle">
+                <input
+                    type="checkbox"
+                    checked={chosen}
+                    onChange={(e) => setChosen(e.target.checked)}
+                />
+                Include in Process Recording
+            </label>
             <ChorusSliders 
-                setChorusLevel={setChorusLevel}
-                setChorusRate={setChorusRate}
-                setChorusDepth={setChorusDepth}
+                setChorusLevel={setLevel}
+                setChorusRate={setRate}
+                setChorusDepth={setDepth}
             />
-        </>
+        </div>
     )
 }

@@ -11,18 +11,16 @@ export function DistortionSliders({
     setDistortionWetDry
 }) {
     return(
-        <>
-            <div>
-                <DistortionVolumeSlider 
-                    setDistortionVolume={setDistortionVolume}
-                />
-                <DistortionGainSlider 
-                    setDistortionGain={setDistortionGain}
-                />
-                <DistortionWetDrySlider
-                    setDistortionWetDry={setDistortionWetDry}
-                />
-            </div>
-        </>
+        <div className="slider-group">
+            <DistortionVolumeSlider 
+                setDistortionVolume={setDistortionVolume}
+            />
+            <DistortionGainSlider 
+                setDistortionGain={setDistortionGain}
+            />
+            <DistortionWetDrySlider
+                setDistortionWetDry={setDistortionWetDry}
+            />
+        </div>
     )
 }
